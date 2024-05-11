@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
 import LocalHotelOutlinedIcon from "@mui/icons-material/LocalHotelOutlined";
 import BathtubOutlinedIcon from "@mui/icons-material/BathtubOutlined";
 import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
@@ -9,7 +8,7 @@ import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFi
 import LocalGasStationOutlinedIcon from "@mui/icons-material/LocalGasStationOutlined";
 
 function Student() {
-   const [file, setFile] = useState("");
+  const [file, setFile] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [day, setDay] = useState("");
@@ -23,13 +22,12 @@ function Student() {
   const [editingStudentId, setEditingStudentId] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/student").then((res) => {
+    axios.get("https://hotel-cyan-eta.vercel.app/student").then((res) => {
       setStudents(res.data);
     });
   }, []);
 
   function studentSubmit(e) {
-
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
@@ -44,7 +42,7 @@ function Student() {
     formData.append("fuel", fuel);
     if (editingStudentId) {
       axios
-        .put(`http://localhost:5000/student/${editingStudentId}`, {
+        .put(`https://hotel-cyan-eta.vercel.app/student/${editingStudentId}`, {
           name,
           price,
           day,
@@ -65,22 +63,22 @@ function Student() {
         })
         .catch((err) => console.log(err));
     } else {
-     axios
-       .post("http://localhost:5000/student", formData, {
-         headers: {
-           "Content-Type": "multipart/form-data",
-         },
-       })
-       .then((res) => {
-         setStudents([...students, res.data]);
-         resetFormFields();
-       })
-       .catch((err) => console.log(err));
+      axios
+        .post("https://hotel-cyan-eta.vercel.app/student", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          setStudents([...students, res.data]);
+          resetFormFields();
+        })
+        .catch((err) => console.log(err));
     }
   }
 
   function resetFormFields() {
-     setFile("");
+    setFile("");
     setName("");
     setPrice("");
     setDay("");
@@ -94,7 +92,7 @@ function Student() {
 
   function deleteStudent(id) {
     axios
-      .delete(`http://localhost:5000/student/${id}`)
+      .delete(`https://hotel-cyan-eta.vercel.app/student/${id}`)
       .then(() => {
         setStudents(students.filter((student) => student._id !== id));
       })
@@ -224,7 +222,7 @@ function Student() {
           <div className="roomssADMIN" key={student._id}>
             <img
               className="adminIMGS"
-              src={`http://localhost:5000/${student.image}`}
+              src={`https://hotel-cyan-eta.vercel.app/${student.image}`}
               alt=""
             />
             <div className="roomDetails">
