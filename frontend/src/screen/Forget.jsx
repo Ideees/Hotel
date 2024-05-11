@@ -27,7 +27,7 @@ function Forget() {
     }else{
 
       axios
-      .post("http://localhost:5000/forgot", { email })
+      .post("https://hotel-cyan-eta.vercel.app/forgot", { email })
       .then((result) => {
         if (result.data === "Password reset link sent to your email") {
          
