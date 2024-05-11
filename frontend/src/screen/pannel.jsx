@@ -58,7 +58,7 @@ function User() {
   const [user, setUser] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/getuser")
+      .get("https://hotel-cyan-eta.vercel.app/getuser")
       .then((user) => {
         setUser(user.data);
       })
