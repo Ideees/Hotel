@@ -29,8 +29,7 @@ function RegisterSubmit(e) {
     return;
   }
 
-  axios
-    .post("https://hotel-cyan-eta.vercel.app/Huser", {
+  axios.post("https://hotel-cyan-eta.vercel.app/Huser", {
       name,
       email,
       password,
