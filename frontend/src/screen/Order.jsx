@@ -13,7 +13,7 @@ function Order() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/bookRoom")
+      .get("https://hotel-cyan-eta.vercel.app/bookRoom")
       .then((res) => {
         setBook(res.data);
       })
