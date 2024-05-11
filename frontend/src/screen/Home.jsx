@@ -45,7 +45,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import aboutImage from "../images/about.jpeg";
 import chose from "../images/chose.jpeg";
 import axios from "axios";
- 
+
 function Home() {
   useEffect(() => {
     AOS.init({
@@ -57,7 +57,7 @@ function Home() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home")
+      .get("https://hotel-cyan-eta.vercel.app/home")
       .then((response) => {
         if (response.data.Status !== "Success") {
           navigate("/");
@@ -80,7 +80,6 @@ function Home() {
 
   return (
     <div className="mainCon">
-      
       <header>
         <div className="headerCall">
           <LocationOnIcon
@@ -106,8 +105,14 @@ function Home() {
             <PersonAddAltIcon
               style={{ fontSize: "16px", fontWeight: 800, marginRight: "5px" }}
             />
-            {userData ? <>{userData.name}
-            {userData.bed}</> : <p>Loading...</p>}
+            {userData ? (
+              <>
+                {userData.name}
+                {userData.bed}
+              </>
+            ) : (
+              <p>Loading...</p>
+            )}
           </button>
         </div>
       </header>
@@ -130,9 +135,8 @@ function Nav() {
   const [mobilebtn, setMobilebtn] = useState(null);
   const navigate = useNavigate();
 
-  
-  function  Profile(){
- navigate("/profile");
+  function Profile() {
+    navigate("/profile");
   }
 
   return (
@@ -156,10 +160,9 @@ function Nav() {
           </a>
           <a href="#LINKS3">
             <li data-aos="flip-up" data-aos-duration="1600">
-               About
+              About
             </li>
           </a>
-         
         </ul>
         <div className="mobile">
           <ul className={mobilebtn === "al" ? " " : "active"}>
@@ -217,7 +220,7 @@ function Booking() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home")
+      .get("https://hotel-cyan-eta.vercel.app/home")
       .then((res) => {
         setUserData(res.data);
       })
@@ -232,7 +235,7 @@ function Booking() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/booking", {
+      .post("https://hotel-cyan-eta.vercel.app/booking", {
         userId: userData.userId,
         date,
         room,
@@ -305,11 +308,7 @@ function About() {
           memories with us at Guest Harbor.
         </p>
         <div className="aboutIcon">
-          <div
-            className="customer"
-            data-aos="flip-up"
-            data-aos-duration="800"
-          >
+          <div className="customer" data-aos="flip-up" data-aos-duration="800">
             <SentimentSatisfiedAltIcon
               sx={{ fontSize: 60, color: "#fea116" }}
             />
@@ -423,7 +422,7 @@ function FutureRoom() {
     const [userData, setUserData] = useState({});
     useEffect(() => {
       axios
-        .get("http://localhost:5000/homeDealGet")
+        .get("https://hotel-cyan-eta.vercel.app/homeDealGet")
         .then((res) => {
           setHomeDeal(res.data);
         })
@@ -434,10 +433,9 @@ function FutureRoom() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:5000/home")
+        .get("https://hotel-cyan-eta.vercel.app/home")
         .then((res) => {
           setUserData(res.data);
-          
         })
         .catch((err) => console.log(err));
     }, []);
@@ -445,13 +443,12 @@ function FutureRoom() {
     const bookRoom = (data) => {
       data.UserName = userData.name;
       data.UserEmail = userData.email;
-      data.UserContact = userData.contact
+      data.UserContact = userData.contact;
 
       data.userId = userData.userId;
-       
 
       axios
-        .post("http://localhost:5000/bookRoom", data)
+        .post("https://hotel-cyan-eta.vercel.app/bookRoom", data)
         .then((res) => {
           console.log("Booking successful:", res.data);
         })
@@ -465,7 +462,7 @@ function FutureRoom() {
         {homeDeal.map((data) => (
           <div className="rooms" data-aos="fade-up">
             <img
-              src={`http://localhost:5000/${data.image}`}
+              src={`https://hotel-cyan-eta.vercel.app/${data.image}`}
               alt=""
               className="room-img"
               id="LINKS2"
@@ -526,7 +523,7 @@ function FutureRoom() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:5000/homeGuestGet")
+        .get("https://hotel-cyan-eta.vercel.app/homeGuestGet")
         .then((res) => {
           setHomeGuest(res.data);
         })
@@ -537,7 +534,7 @@ function FutureRoom() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:5000/home")
+        .get("https://hotel-cyan-eta.vercel.app/home")
         .then((res) => {
           setUserData(res.data);
         })
@@ -546,12 +543,12 @@ function FutureRoom() {
 
     const bookRoom = (data) => {
       data.userId = userData.userId;
-       data.UserName = userData.name;
-       data.UserEmail = userData.email;
-       data.UserContact = userData.contact;
+      data.UserName = userData.name;
+      data.UserEmail = userData.email;
+      data.UserContact = userData.contact;
 
       axios
-        .post("http://localhost:5000/bookRoom", data)
+        .post("https://hotel-cyan-eta.vercel.app/bookRoom", data)
         .then((res) => {
           console.log("Booking successful:", res.data);
         })
@@ -563,9 +560,9 @@ function FutureRoom() {
     return (
       <>
         {homeGuest.map((data) => (
-          <div className="rooms" key={data._id}  data-aos="fade-up">
+          <div className="rooms" key={data._id} data-aos="fade-up">
             <img
-              src={`http://localhost:5000/${data.image}`}
+              src={`https://hotel-cyan-eta.vercel.app/${data.image}`}
               alt=""
               className="room-img"
             />
@@ -624,7 +621,7 @@ function FutureRoom() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:5000/student")
+        .get("https://hotel-cyan-eta.vercel.app/student")
         .then((res) => {
           setHomeStudent(res.data);
         })
@@ -635,7 +632,7 @@ function FutureRoom() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:5000/home")
+        .get("https://hotel-cyan-eta.vercel.app/home")
         .then((res) => {
           setUserData(res.data);
         })
@@ -644,12 +641,12 @@ function FutureRoom() {
 
     const bookRoom = (data) => {
       data.userId = userData.userId;
-       data.UserName = userData.name;
-       data.UserEmail = userData.email;
-       data.UserContact = userData.contact;
+      data.UserName = userData.name;
+      data.UserEmail = userData.email;
+      data.UserContact = userData.contact;
 
       axios
-        .post("http://localhost:5000/bookRoom", data)
+        .post("https://hotel-cyan-eta.vercel.app/bookRoom", data)
         .then((res) => {
           console.log("Booking successful:", res.data);
         })
@@ -663,7 +660,7 @@ function FutureRoom() {
         {homeStudent.map((data) => (
           <div className="rooms" data-aos="fade-up">
             <img
-              src={`http://localhost:5000/${data.image}`}
+              src={`https://hotel-cyan-eta.vercel.app/${data.image}`}
               alt=""
               className="room-img"
             />
@@ -719,7 +716,7 @@ function FutureRoom() {
     const [userData, setUserData] = useState({});
     useEffect(() => {
       axios
-        .get("http://localhost:5000/home")
+        .get("https://hotel-cyan-eta.vercel.app/home")
         .then((res) => {
           setUserData(res.data);
         })
@@ -728,7 +725,7 @@ function FutureRoom() {
 
     useEffect(() => {
       axios
-        .get("http://localhost:5000/event")
+        .get("https://hotel-cyan-eta.vercel.app/event")
         .then((res) => {
           setHomeEvent(res.data);
         })
@@ -740,12 +737,12 @@ function FutureRoom() {
     const bookRoom = (data) => {
       data.userId = userData.userId;
 
-       data.UserName = userData.name;
-       data.UserEmail = userData.email;
-       data.UserContact = userData.contact;
+      data.UserName = userData.name;
+      data.UserEmail = userData.email;
+      data.UserContact = userData.contact;
 
       axios
-        .post("http://localhost:5000/bookRoom", data)
+        .post("https://hotel-cyan-eta.vercel.app/bookRoom", data)
         .then((res) => {
           console.log("Booking successful:", res.data);
         })
@@ -759,7 +756,7 @@ function FutureRoom() {
         {homeEvent.map((data) => (
           <div className="rooms" data-aos="fade-up">
             <img
-              src={`http://localhost:5000/${data.image}`}
+              src={`https://hotel-cyan-eta.vercel.app/${data.image}`}
               className="room-img"
               alt=""
             />
@@ -862,7 +859,7 @@ function FutureRoom() {
 function Chose() {
   return (
     <div className="mainChose">
-      <div className="choseDetail" >
+      <div className="choseDetail">
         <h4>Why Choose Us</h4>
         <h1>We Care You & We Feel What’s Needs For Good Living</h1>
         <div className="choseIcon">
@@ -912,7 +909,6 @@ function Chose() {
 function Footer() {
   return (
     <div className="footer">
-      
       <div className="footerStyle">
         <h1>Guest Harbor</h1>
         <p>
@@ -952,4 +948,3 @@ function Footer() {
     </div>
   );
 }
- 
