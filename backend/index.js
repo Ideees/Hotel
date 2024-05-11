@@ -24,7 +24,7 @@ const app = express();
 // Middleware setup
 app.use(
   cors({
-    origin: [res.setHeader('https://hotel-front-taupe.vercel.app')],
+    origin: ['https://hotel-front-taupe.vercel.app'],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   })
