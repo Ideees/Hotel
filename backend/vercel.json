@@ -9,4 +9,18 @@
           "dest": "/"
         }
     ]
-  }
+  },
+{
+  "headers": [
+    {
+      "source": "/Huser",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://hotel-front-taupe.vercel.app"
+        }
+      ]
+    }
+  ]
+}
+
