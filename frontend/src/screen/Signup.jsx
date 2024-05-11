@@ -30,7 +30,7 @@ function RegisterSubmit(e) {
   }
 
   axios
-    .post("http://localhost:5000/Huser", {
+    .post("https://hotel-cyan-eta.vercel.app/Huser", {
       name,
       email,
       password,
