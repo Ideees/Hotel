@@ -23,7 +23,7 @@ function Deal() {
   const [editingDealId, setEditingDealId] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/deal").then((res) => {
+    axios.get("https://hotel-cyan-eta.vercel.app/deal").then((res) => {
       setDeals(res.data);
     });
   }, []);
@@ -43,7 +43,7 @@ function Deal() {
      formData.append("fuel", fuel);
     if (editingDealId) {
       axios
-        .put(`http://localhost:5000/deal/${editingDealId}`, {
+        .put(`https://hotel-cyan-eta.vercel.app/deal/${editingDealId}`, {
           name,
           price,
           day,
@@ -65,7 +65,7 @@ function Deal() {
         .catch((err) => console.log(err));
     } else {
       axios
-        .post("http://localhost:5000/deal", formData, {
+        .post("https://hotel-cyan-eta.vercel.app/deal", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -93,7 +93,7 @@ function Deal() {
 
   function deleteDeal(id) {
     axios
-      .delete(`http://localhost:5000/deal/${id}`)
+      .delete(`https://hotel-cyan-eta.vercel.app/deal/${id}`)
       .then(() => {
         setDeals(deals.filter((deal) => deal._id !== id));
       })
