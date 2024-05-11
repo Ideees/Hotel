@@ -20,7 +20,7 @@ function  Reset() {
     e.preventDefault();
 
     axios
-      .post(`http://localhost:5000/restPassword/${id}/${token}`, { password })
+      .post(`https://hotel-cyan-eta.vercel.app/${id}/${token}`, { password })
       .then((result) => {
         if (result.data === "Password reset link sent to your email") {
           navigate("/");
