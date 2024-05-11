@@ -47,7 +47,7 @@ function RegisterSubmit(e) {
       setPassword("");
       setContact("");
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("error display"));
 }
 
 
