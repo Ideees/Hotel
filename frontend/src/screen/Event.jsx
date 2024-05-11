@@ -23,7 +23,7 @@ function Event() {
   const [editingEventId, setEditingEventId] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/event").then((res) => {
+    axios.get("https://hotel-cyan-eta.vercel.app/event").then((res) => {
       setEvents(res.data);
     });
   }, []);
@@ -45,7 +45,7 @@ function eventSubmit(e) {
 
   if (editingEventId !== null) {
     axios
-      .put(`http://localhost:5000/event/${editingEventId}`, formData, {
+      .put(`https://hotel-cyan-eta.vercel.app/event/${editingEventId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -64,7 +64,7 @@ function eventSubmit(e) {
       });
   } else {
     axios
-      .post("http://localhost:5000/event", formData, {
+      .post("https://hotel-cyan-eta.vercel.app/event", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -111,7 +111,7 @@ function updateEvent(event) {
 
   function deleteEvent(id) {
     axios
-      .delete(`http://localhost:5000/event/${id}`)
+      .delete(`https://hotel-cyan-eta.vercel.app/event/${id}`)
       .then(() => {
         setEvents(events.filter((event) => event._id !== id));
       })
