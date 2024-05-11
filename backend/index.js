@@ -34,13 +34,8 @@ app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // MongoDB connection
-mongoose
-  .connect("mongodb+srv://idreesfaiz9:goodlu11@hotel.pne77u9.mongodb.net/Hotels?retryWrites=true&w=majority&appName=Hotel", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+mongoose.connect("mongodb+srv://idreesfaiz9:goodlu11@hotel.pne77u9.mongodb.net/Hotels?retryWrites=true&w=majority&appName=Hotel")
+   
 app.get("/", (req, res) => {
     res.json("hello idrees");
 })
