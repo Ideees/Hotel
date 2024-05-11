@@ -35,7 +35,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // MongoDB connection
 mongoose
-  .connect("mongodb+srv://Idrees_Faiz:Avengers1646@cluster0.kgfhmt2.mongodb.net/Hotel?retryWrites=true&w=majority&appName=Cluster0", {
+  .connect("mongodb+srv://idreesfaiz9:goodlu11@hotel.pne77u9.mongodb.net/Hotels?retryWrites=true&w=majority&appName=Hotel",, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
