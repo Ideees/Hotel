@@ -35,7 +35,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // MongoDB connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Hotel", {
+  .connect("mongodb+srv://idreesfaiz63:faiz63@cluster0.q4vivv4.mongodb.net/hotel?retryWrites=true&w=majority&appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
