@@ -24,7 +24,7 @@ function Header() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home")
+      .get("https://hotel-cyan-eta.vercel.app/home")
       .then((response) => {
         if (response.data.Status !== "Success") {
           navigate("/");
