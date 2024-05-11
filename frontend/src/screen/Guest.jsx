@@ -33,7 +33,7 @@ function Guest() {
   const [editFuel, setEditFuel] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/guest").then((res) => {
+    axios.get("https://hotel-cyan-eta.vercel.app/guest").then((res) => {
       
       setGuests(res.data);
       
@@ -55,7 +55,7 @@ function Guest() {
 
     e.preventDefault();
     axios
-      .post("http://localhost:5000/guest", formData, {
+      .post("https://hotel-cyan-eta.vercel.app/guest", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -103,7 +103,7 @@ function Guest() {
 
   function updateGuest(guestId) {
     axios
-      .put(`http://localhost:5000/guest/${guestId}`, {
+      .put(`https://hotel-cyan-eta.vercel.app/guest/${guestId}`, {
         name: editName,
         price: editPrice,
         day: editDay,
@@ -126,7 +126,7 @@ function Guest() {
 
   function deleteGuest(id) {
     axios
-      .delete(`http://localhost:5000/guest/${id}`)
+      .delete(`https://hotel-cyan-eta.vercel.app/guest/${id}`)
       .then(() => {
         console.log("guest deleted");
         setGuests(guests.filter((guest) => guest._id !== id));
