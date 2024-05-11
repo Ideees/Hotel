@@ -16,7 +16,7 @@ const ProfileCard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home")
+      .get("https://hotel-cyan-eta.vercel.app/home")
       .then((res) => {
         setUser(res.data);
         setOrders(res.data.orders);
