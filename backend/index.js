@@ -24,11 +24,14 @@ const app = express();
 // Middleware setup
 app.use(
   cors({
-  origin: 'https://hotel-front-taupe.vercel.app',
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
+    origin: 'https://hotel-front-taupe.vercel.app',
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+    allowedHeaders: ['Content-Type', 'Authorization'], // Add headers you want to allow
   })
 );
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
