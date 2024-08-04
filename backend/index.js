@@ -24,7 +24,7 @@ const app = express();
 // Middleware setup
 app.use(
   cors({
-    origin: 'https://hotel-front-taupe.vercel.app',
+    origin: 'https://hotel-sage-beta.vercel.app',
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
