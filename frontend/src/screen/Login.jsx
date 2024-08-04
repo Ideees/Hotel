@@ -33,7 +33,7 @@ function Login() {
     else{
 
       axios
-      .post("https://hotel-cyan-eta.vercel.app/Login", { email, password })
+      .post("https://hotel-sage-beta.vercel.app/Login", { email, password })
       .then((result) => {
         console.log(result);
         if (result.data.Status === "Success") {
